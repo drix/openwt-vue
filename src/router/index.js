@@ -1,27 +1,50 @@
+import Auth from "@okta/okta-vue"
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Home from '../views/Home.vue'
 
-Vue.use(VueRouter)
+Vue.use(Auth, {
+  issuer: 'https://dev-756139.okta.com/oauth2/default',
+  client_id: '0oa4dt7coy66lwKeS4x6',
+  redirect_uri: 'http://localhost:8080/implicit/callback',
+  scope: 'openid profile email'
+});
+
+Vue.use(Router);
+
+const lazyRoute = (route) => ({
+    path: route.path,
+    name: route.component,
+    component: () => import(`../views/${route.component}.vue`),
+    meta: { requiresAuth: true },
+})
+const lazyRoutes = [
+    { path: '/about', component: 'About' },
+    { path: '/boat', component: 'BoatList' },
+    { path: '/boat/new', component: 'BoatNew' },
+    { path: '/boat/:id', component: 'Boat' },
+    { path: '/boat/:id/edit', component: 'BoatEdit' },
+    { path: '/boat/:id/delete', component: 'BoatDelete' },
+].map(lazyRoute)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    {
+        path: '/',
+        name: 'home',
+        component: Home
+    },
+    {
+        path: '/implicit/callback',
+        component: Auth.handleCallback(),
+    },
+    ... lazyRoutes
 ]
 
-const router = new VueRouter({
+let router = new Router({
+  mode: 'history',
   routes
-})
+});
+
+router.beforeEach(Vue.prototype.$auth.authRedirectGuard());
 
 export default router

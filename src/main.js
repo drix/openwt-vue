@@ -8,8 +8,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 import store from './store'
 
-Vue.use(BootstrapVue)
 Vue.config.productionTip = false
+
+Vue.use(BootstrapVue)
 
 new Vue({
   router,
