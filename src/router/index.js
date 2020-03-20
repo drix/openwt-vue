@@ -1,22 +1,21 @@
-import Auth from "@okta/okta-vue"
+//import Auth from "@okta/okta-vue"
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
 
-Vue.use(Auth, {
-  issuer: 'https://dev-756139.okta.com/oauth2/default',
-  client_id: '0oa4dt7coy66lwKeS4x6',
-  redirect_uri: 'http://localhost:8080/implicit/callback',
-  scope: 'openid profile email'
-});
-
+//Vue.use(Auth, {
+//  issuer: 'https://dev-756139.okta.com/oauth2/default',
+//  client_id: '0oa4dt7coy66lwKeS4x6',
+//  redirect_uri: 'http://iotech.club/implicit/callback',
+//  scope: 'openid profile email'
+//});
 Vue.use(Router);
 
 const lazyRoute = (route) => ({
     path: route.path,
     name: route.component,
     component: () => import(`../views/${route.component}.vue`),
-    meta: { requiresAuth: true },
+    //meta: { requiresAuth: true },
 })
 const lazyRoutes = [
     { path: '/about', component: 'About' },
@@ -33,10 +32,10 @@ const routes = [
         name: 'home',
         component: Home
     },
-    {
-        path: '/implicit/callback',
-        component: Auth.handleCallback(),
-    },
+//    {
+//        path: '/implicit/callback',
+//        component: Auth.handleCallback(),
+//    },
     ... lazyRoutes
 ]
 
@@ -45,6 +44,6 @@ let router = new Router({
   routes
 });
 
-router.beforeEach(Vue.prototype.$auth.authRedirectGuard());
+//router.beforeEach(Vue.prototype.$auth.authRedirectGuard());
 
 export default router

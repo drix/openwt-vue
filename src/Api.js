@@ -1,7 +1,7 @@
 import axios from 'axios'
-import Vue from 'vue'
+//import Vue from 'vue'
 
-const SERVER_URL = 'http://localhost:8090';
+const SERVER_URL = 'http://iotech.club:8090';
 
 const instance = axios.create({
   baseURL: SERVER_URL,
@@ -11,14 +11,14 @@ const instance = axios.create({
 
 export default {
     async execute(method, resource, data, config) {
-        let accessToken = await Vue.prototype.$auth.getAccessToken()
+        //let accessToken = await Vue.prototype.$auth.getAccessToken()
         return instance({
           method:method,
           url: resource,
           data,
-          headers: {
-                Authorization: `Bearer ${accessToken}`
-          },
+//          headers: {
+//                Authorization: `Bearer ${accessToken}`
+//          },
           ...config
         })
     },
