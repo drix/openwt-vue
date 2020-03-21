@@ -1,6 +1,7 @@
 import axios from 'axios'
 //import Vue from 'vue'
 
+//const SERVER_URL = 'http://localhost:8090';
 const SERVER_URL = 'http://iotech.club:8090';
 
 const instance = axios.create({
@@ -24,20 +25,18 @@ export default {
     },
 
     // (C)reate
-    createNew(text, completed) {
-      return this.execute('POST', 'boat', {title: text, completed: completed})
+    createNew(name, description) {
+      return this.execute('POST', 'boat', { name, description })
     },
     // (R)ead
     getAll() {
       return this.execute('GET','boat', null, {
-        transformResponse: [function (data) {
-          return data? JSON.parse(data)._embedded.todos : data;
-        }]
+        transformResponse: [ JSON.parse ]
       })
     },
     // (U)pdate
-    updateForId(id, text, completed) {
-      return this.execute('PUT', 'boat/' + id, { title: text, completed: completed })
+    updateForId(id, name, description) {
+      return this.execute('PUT', `boat/${id}`, { name, description })
     },
     // (D)elete
     removeForId(id) {

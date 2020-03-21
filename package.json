@@ -5,13 +5,17 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "test:karma": "karma start --coverage",
+    "test:karma:watch": "karma start --single-run=false --auto-watch=true",
     "commit": "git-cz",
     "prepush": "npm run lint",
-    "release-patch": "standard-version --release-as patch -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
-    "release-minor": "standard-version --release-as minor -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
-    "release-major": "standard-version --release-as major -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
-    "test:karma": "karma start --coverage",
-    "test:karma:watch": "karma start --single-run=false --auto-watch=true"
+    "release:patch": "standard-version --release-as patch -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "release:minor": "standard-version --release-as minor -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "release:major": "standard-version --release-as major -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "docker:build": "docker build -t adrianospadoni/openwt-vue:rpi.$OPENWT_VERSION .",
+    "docker:push": "docker push adrianospadoni/openwt-vue:rpi.$OPENWT_VERSION",
+    "deploy:version": "OPENWT_VERSION=$(node -p -e \"require('./package.json').version\")",
+    "deploy": "npm run build && npm run deploy:version && npm run docker:build && npm run docker:push"
   },
   "dependencies": {
     "@okta/okta-vue": "^1.3.0",

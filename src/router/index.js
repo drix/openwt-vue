@@ -1,7 +1,7 @@
 //import Auth from "@okta/okta-vue"
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../components/Home.vue'
 
 //Vue.use(Auth, {
 //  issuer: 'https://dev-756139.okta.com/oauth2/default',
@@ -14,7 +14,7 @@ Vue.use(Router);
 const lazyRoute = (route) => ({
     path: route.path,
     name: route.component,
-    component: () => import(`../views/${route.component}.vue`),
+    component: () => import(`../components/${route.component}.vue`),
     //meta: { requiresAuth: true },
 })
 const lazyRoutes = [
