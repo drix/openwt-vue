@@ -19,7 +19,7 @@ const lazyRoute = (route) => ({
 })
 const lazyRoutes = [
     { path: '/about', component: 'About' },
-    { path: '/boat', component: 'BoatList' },
+    { path: '/boat', component: 'List' },
     { path: '/boat/new', component: 'BoatNew' },
     { path: '/boat/:id', component: 'Boat' },
     { path: '/boat/:id/edit', component: 'BoatEdit' },

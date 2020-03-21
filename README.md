@@ -2,7 +2,24 @@
 
 # openwt
 
-View for OpenWT test
+View for OpenWT test. It consists in the follow requirements:
+
+Create the „Boat App“. It’s a simple app, where a user can get a quick overview over
+list of boats ...
+The following use cases should be implemented:
+
+Use Case 1
+The user opens your app and gets a login screen. He has to login. After a successful
+login he is navigated to the overview page (UC2).
+
+Use Case 2
+The user has a list of all boat resources
+
+Use Case 3
+The user can add or update or delete boat
+
+Use Case 4
+The user clicks on a boat item and gets a detail view over it.
 
 ## Project setup
 ```
