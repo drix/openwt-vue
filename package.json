@@ -1,11 +1,21 @@
 {
   "name": "openwt",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && ",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "commit": "git-cz"
+    "test:karma": "karma start --coverage",
+    "test:karma:watch": "karma start --single-run=false --auto-watch=true",
+    "commit": "git-cz",
+    "prepush": "npm run lint",
+    "release:patch": "standard-version --release-as patch -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "release:minor": "standard-version --release-as minor -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "release:major": "standard-version --release-as major -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "docker:build": "docker build -t adrianospadoni/openwt-vue:latest .",
+    "docker:push": "docker push adrianospadoni/openwt-vue:latest",
+    "deploy:version": "OPENWT_VERSION=$(node -p -e \"require('./package.json').version\")",
+    "deploy": "npm run build && npm run deploy:version && npm run docker:build && npm run docker:push"
   },
   "dependencies": {
     "@okta/okta-vue": "^1.3.0",
@@ -27,6 +37,7 @@
     "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
+    "standard-version": "^7.1.0",
     "vue-template-compiler": "^2.6.11",
     "vuejs-logger": "^1.5.4"
   },
