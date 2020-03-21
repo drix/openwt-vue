@@ -15,6 +15,7 @@ const lazyRoute = (route) => ({
     path: route.path,
     name: route.component,
     component: () => import(`../components/${route.component}.vue`),
+    props: true,
     //meta: { requiresAuth: true },
 })
 const lazyRoutes = [

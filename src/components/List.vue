@@ -41,6 +41,7 @@
     import api from '../Api'
 
     export default {
+      name: 'List',
       template: '#boat-list',
       data: () => ({
         boats: [],
