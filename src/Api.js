@@ -34,6 +34,11 @@ export default {
         transformResponse: [ JSON.parse ]
       })
     },
+    getById(id) {
+      return this.execute('GET', `boat/${id}`, null, {
+        transformResponse: [ JSON.parse ]
+      })
+    },
     // (U)pdate
     updateForId(id, name, description) {
       return this.execute('PUT', `boat/${id}`, { name, description })
