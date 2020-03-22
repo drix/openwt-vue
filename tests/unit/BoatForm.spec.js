@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import BoatForm from '@/components/BoatForm.vue'
 import Vue from 'vue'
 import { VBToggle } from 'bootstrap-vue'

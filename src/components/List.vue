@@ -1,5 +1,6 @@
 <template id="boat-list">
     <div class="overflow-auto">
+        <b-alert variant="danger" :show="error">Error loading the Boats</b-alert>
         <b-nav pills>
             <b-nav-item>
                 <router-link :to="{path: '/boat/new' }">
@@ -55,7 +56,8 @@
         busy: true,
         currentPage: 1,
         perPage: 6,
-        fields: [ "thumbnail", "name", "description", "action" ]
+        fields: [ "thumbnail", "name", "description", "action" ],
+        error: false,
       }),
       computed: {
         filteredBoats() {
@@ -66,10 +68,16 @@
           return this.filteredBoats.length
         }
       },
+      methods: {
+        onError() {
+            this.error = true
+            setTimeout(() => this.error = false, 2000)
+        },
+      },
       mounted() {
         api.getAll()
           .then((response) => this.boats = response.data )
-          .catch(() => this.error = "Failed to load boats")
+          .catch(this.onError)
           .finally(() => this.busy = false)
       },
     }

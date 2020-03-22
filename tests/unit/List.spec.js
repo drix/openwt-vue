@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import List from '@/components/List.vue'
 
 const factory = (values = {}) => {
