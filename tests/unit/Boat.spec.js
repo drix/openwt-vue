@@ -10,6 +10,10 @@ const factory = (values = {}) => {
 }
 
 describe('Boat.vue', () => {
+  it('renders passed', () => {
+    const wrapper = factory()
+    expect(wrapper.isVueInstance).toBeTruthy();
+  })
 
   it('renders description when passed', () => {
     const wrapper = factory({ data: { description: "my boat"  }})
