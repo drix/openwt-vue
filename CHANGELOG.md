@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/drix/openwt-vue/compare/0.2.0...0.3.0) (2020-03-22)
+
+
+### Features
+
+* **boat:** add boat details page ([d9be918](https://github.com/drix/openwt-vue/commit/d9be9186ba2dffd6e7eb899b7e898583a9af1531))
+* **boat list:** add boat list using vue bootstrap ([4c5682e](https://github.com/drix/openwt-vue/commit/4c5682e0471446f8c5fb4c3f9bd097f8709e2119))
+* **boat list:** add pagination and thumbnails to the boat list ([4f7eae8](https://github.com/drix/openwt-vue/commit/4f7eae82654a23ba405fb15079cf49b2ecb95438))
+* **boatform:** add Boat Form page to create new boat ([8683c25](https://github.com/drix/openwt-vue/commit/8683c25a2b71c2ece3fb79001f2755ea87be3493))
+* **boatform:** add delete boat functionality ([808deca](https://github.com/drix/openwt-vue/commit/808decaeb17ead3fae9fbb96dbed6879f48994bb))
+
 ## 0.2.0 (2020-03-20)
 
 
