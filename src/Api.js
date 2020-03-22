@@ -1,8 +1,8 @@
 import axios from 'axios'
 //import Vue from 'vue'
 
-//const SERVER_URL = 'http://localhost:8090';
-const SERVER_URL = 'http://iotech.club:8090';
+const SERVER_URL = 'http://localhost:8090';
+//const SERVER_URL = 'http://iotech.club:8090';
 
 const instance = axios.create({
   baseURL: SERVER_URL,
@@ -25,7 +25,7 @@ export default {
     },
 
     // (C)reate
-    createNew(name, description) {
+    createNew({ name, description }) {
       return this.execute('POST', 'boat', { name, description })
     },
     // (R)ead
@@ -40,8 +40,8 @@ export default {
       })
     },
     // (U)pdate
-    updateForId(id, name, description) {
-      return this.execute('PUT', `boat/${id}`, { name, description })
+    updateForId({ id, name, description }) {
+      return this.execute('PUT', `boat/${id}`, { name, description } )
     },
     // (D)elete
     removeForId(id) {
