@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/drix/openwt-vue/compare/0.3.0...0.3.1) (2020-03-22)
+
+
+### Bug Fixes
+
+* **package:** fix deploy script ([3a9eeda](https://github.com/drix/openwt-vue/commit/3a9eedacc453b9c03933423cb5c3f9d1b67c2527))
+
 ## [0.3.0](https://github.com/drix/openwt-vue/compare/0.2.0...0.3.0) (2020-03-22)
 
 
