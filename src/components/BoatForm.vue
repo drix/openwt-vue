@@ -40,7 +40,9 @@
                 <b-row>
                   <b-col sm="3"></b-col>
                   <b-col sm="9">
-                      <b-button type="submit" variant="primary"><b-icon icon="gear-fill"></b-icon>{{actionTitle}}</b-button>
+                      <b-button type="submit" variant="primary" :disabled="!valid">
+                        <b-icon icon="gear-fill"></b-icon>{{actionTitle}}
+                      </b-button>
                       <b-button type="reset" variant="primary">Reset</b-button>
                       <b-button v-b-toggle="'delete-confirm'" v-if="!!id">Delete</b-button>
 
@@ -65,10 +67,18 @@
 
 <script>
     import api from '../Api'
+    import {
+        BIcon, BCollapse, BRow, BCol, BContainer, BSpinner, BImg,
+        BForm, BFormTextarea, BFormInput, BButton, BAlert
+    } from 'bootstrap-vue'
 
     export default {
-        name: 'BoatEdit',
-        template: '#boat-edit',
+        name: 'BoatForm',
+        template: '#boat-form',
+        components: {
+            BIcon, BCollapse, BRow, BCol, BContainer, BSpinner, BImg,
+            BForm, BFormTextarea, BFormInput, BButton, BAlert
+        },
         props: {
             id: String
         },
@@ -77,6 +87,7 @@
             busy: true,
             success: false,
             error: false,
+            api
         }),
         computed: {
             actionTitle() {
@@ -84,6 +95,9 @@
             },
             action() {
                 return (!this.id ? api.createNew : api.updateForId).bind(api)
+            },
+            valid() {
+                return this.data.name && this.data.name.length > 0
             }
         },
         methods: {

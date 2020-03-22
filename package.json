@@ -7,7 +7,7 @@
     "test:karma": "karma start --coverage",
     "test:karma:watch": "karma start --single-run=false --auto-watch=true",
     "lint": "vue-cli-service lint",
-    "commit": "git-cz",
+    "commit": "git add . && git-cz",
     "prepush": "npm run lint",
     "build": "vue-cli-service build",
     "build:docker": "docker build -t  \"adrianospadoni/openwt-vue:rpi.\"$(node -p -e \"require('./package.json').version\") .",
