@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/drix/openwt-vue/compare/0.4.1...0.4.2) (2020-03-22)
+
+
+### Features
+
+* **list:** add error messahe when failed to load ([a8e8657](https://github.com/drix/openwt-vue/commit/a8e86579e99cb25bfaf26669590053808b2533af))
+
 ### [0.4.1](https://github.com/drix/openwt-vue/compare/0.4.0...0.4.1) (2020-03-22)
 
 
