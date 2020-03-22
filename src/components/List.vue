@@ -73,7 +73,7 @@
             this.error = true
             setTimeout(() => this.error = false, 2000)
         },
-      }
+      },
       mounted() {
         api.getAll()
           .then((response) => this.boats = response.data )
