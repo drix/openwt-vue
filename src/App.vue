@@ -21,7 +21,7 @@
 
 export default {
   name: 'app',
-  /*
+
   data () {
     return {
       activeUser: null
@@ -46,6 +46,6 @@ export default {
       await this.refreshActiveUser()
       this.$router.push('/')
     }
-  }*/
+  }
 }
 </script>

@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/drix/openwt-vue/compare/0.3.2...0.4.0) (2020-03-22)
+
+
+### Features
+
+* **oauth2:** add security to the app ([8a82e9c](https://github.com/drix/openwt-vue/commit/8a82e9cca07df08adab74c671b830ca30545653c))
+
+### [0.3.2](https://github.com/drix/openwt-vue/compare/0.3.1...0.3.2) (2020-03-22)
+
 ### [0.3.1](https://github.com/drix/openwt-vue/compare/0.3.0...0.3.1) (2020-03-22)
 
 
