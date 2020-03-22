@@ -1,8 +1,8 @@
 import axios from 'axios'
 //import Vue from 'vue'
 
-const SERVER_URL = 'http://localhost:8090';
-//const SERVER_URL = 'http://iotech.club:8090';
+//const SERVER_URL = 'http://localhost:8090';
+const SERVER_URL = 'http://iotech.club:8090';
 
 const instance = axios.create({
   baseURL: SERVER_URL,

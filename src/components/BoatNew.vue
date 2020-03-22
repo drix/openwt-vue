@@ -7,9 +7,6 @@
 
     export default {
       name: 'BoatNew',
-      props: {
-        id: String
-      },
       components: {
         BoatForm
       }

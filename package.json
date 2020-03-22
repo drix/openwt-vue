@@ -1,20 +1,21 @@
 {
   "name": "openwt",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
     "test:karma": "karma start --coverage",
     "test:karma:watch": "karma start --single-run=false --auto-watch=true",
-    "commit": "git-cz",
+    "lint": "vue-cli-service lint",
+    "commit": "git add . && git-cz",
     "prepush": "npm run lint",
-    "release:patch": "standard-version --release-as patch -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
-    "release:minor": "standard-version --release-as minor -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "build": "vue-cli-service build",
+    "build:docker": "docker build -t  \"adrianospadoni/openwt-vue:rpi.\"$(node -p -e \"require('./package.json').version\") .",
+    "build:push": "docker push  \"adrianospadoni/openwt-vue:rpi.\"$(node -p -e \"require('./package.json').version\")",
+    "deploy": "npm run build && npm run build:docker && npm run build:push",
     "release:major": "standard-version --release-as major -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
-    "docker:build": "docker build -t  \"adrianospadoni/openwt-vue:rpi.\"$(node -p -e \"require('./package.json').version\") .",
-    "docker:push": "docker push  \"adrianospadoni/openwt-vue:rpi.\"$(node -p -e \"require('./package.json').version\")",
-    "deploy": "npm run build && npm run docker:build && npm run docker:push"
+    "release:minor": "standard-version --release-as minor -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\"",
+    "release:patch": "standard-version --release-as patch -t \"\" -a --releaseCommitMessageFormat \"chore: 🤖 release {{currentTag}}\""
   },
   "dependencies": {
     "@okta/okta-vue": "^1.3.0",
@@ -31,6 +32,7 @@
     "@vue/cli-plugin-babel": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-router": "^4.2.3",
+    "@vue/cli-plugin-unit-jest": "^4.2.3",
     "@vue/cli-plugin-vuex": "^4.2.3",
     "@vue/cli-service": "~4.2.0",
     "@vue/test-utils": "^1.0.0-beta.32",
@@ -54,7 +56,18 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",

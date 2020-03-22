@@ -39,10 +39,16 @@
 
 <script>
     import api from '../Api'
+    import {
+        BPagination, BTable, BFormInput, BNav, BNavItem, BIcon, BButton, BImg
+    } from 'bootstrap-vue'
 
     export default {
       name: 'List',
       template: '#boat-list',
+      components: {
+         BPagination, BTable, BFormInput, BNav, BNavItem, BIcon, BButton, BImg
+      },
       data: () => ({
         boats: [],
         searchKey: '',

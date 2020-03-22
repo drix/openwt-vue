@@ -19,23 +19,27 @@
 </template>
 
 <script>
- import api from '../Api'
+    import api from '../Api'
+    import { BIcon, BCard, BCardText, BButton } from 'bootstrap-vue'
 
     export default {
         name: 'Boat',
         template: '#boat-details',
+        components: {
+            BIcon, BCard, BButton, BCardText
+        },
         props: {
             id: String
         },
-        data: () => ({
-            data: { name: 'loading...' },
-            busy: true,
-        }),
+        data: () => {
+            return {
+                data: { name: 'loading...' }
+            }
+        },
         mounted() {
           api.getById(this.id)
             .then((response) => this.data = response.data )
-            .catch(() => this.error = "Failed to load boats")
-            .finally(() => this.busy = false)
+            .catch(() => this.data = { name: "Failed to loading the boat" })
         },
     }
 </script>
