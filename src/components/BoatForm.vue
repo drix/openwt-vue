@@ -42,7 +42,20 @@
                   <b-col sm="9">
                       <b-button type="submit" variant="primary"><b-icon icon="gear-fill"></b-icon>{{actionTitle}}</b-button>
                       <b-button type="reset" variant="primary">Reset</b-button>
-                      <b-button type="reset" variant="danger" v-if="!!id">Delete</b-button>
+                      <b-button v-b-toggle="'delete-confirm'" v-if="!!id">Delete</b-button>
+
+
+                      <b-collapse id="delete-confirm">
+                        <hr>
+                        <b-row>
+                            <b-col sm="9">
+                                Are you sure you want to sink this boat?
+                            </b-col>
+                            <b-col sm="3">
+                                <b-button variant="danger" sm="3" v-on:click="onDelete($event)">Confirm</b-button>
+                            </b-col>
+                        </b-row>
+                      </b-collapse>
                   </b-col>
                 </b-row>
             </b-container>
@@ -96,11 +109,19 @@
                   this.busy = false
                 })
             },
+            onDelete(){
+                this.busy = true
+                api.removeForId(this.id)
+                    .then(() => this.$router.replace('/boat'))
+                    .catch(this.onError)
+                    .finally(this.onLoaded)
+            },
             onError() {
                 this.error = true
                 setTimeout(() => this.error = false, 2000)
             },
             onSuccess() {
+                if(!this.id) return this.$router.replace('/boat')
                 this.success = true
                 setTimeout(() => this.success = false, 2000)
             },

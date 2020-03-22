@@ -24,7 +24,6 @@ const lazyRoutes = [
     { path: '/boat/new', component: 'BoatNew' },
     { path: '/boat/:id', component: 'Boat' },
     { path: '/boat/:id/edit', component: 'BoatEdit' },
-    { path: '/boat/:id/delete', component: 'BoatDelete' },
 ].map(lazyRoute)
 
 const routes = [

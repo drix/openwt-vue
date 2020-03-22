@@ -10,12 +10,9 @@
               {{ data.description }}
             </b-card-text>
 
-            <router-link class="boat-action" :to="{ path: `/boat/${id}/edit` }">
-               <b-button variant="primary"><b-icon icon="gear-fill"></b-icon>edit</b-button>
-           </router-link>
-
-            <router-link class="boat-action" :to="{ path: `/boat/${id}/delete` }">
-                <b-button variant="danger"><b-icon icon="x-circle-fill"></b-icon>delete</b-button>
+            <hr>
+            <router-link class="boat-action" :to="{ path: `/boat/${id}/edit` }" sm="3">
+                <b-button variant="primary"><b-icon icon="gear-fill"></b-icon>edit</b-button>
             </router-link>
           </b-card>
     </div>
