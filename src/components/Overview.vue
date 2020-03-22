@@ -3,7 +3,7 @@
     <div>
       <h1 class="display-3">Your Boat</h1>
       <img alt="Vue logo" src="../assets/logo.png">
-      <p class="lead">This is the homepage using vue.js</p>
+      <p class="lead">This site is using vue.js</p>
     </div>
   </div>
 </template>
